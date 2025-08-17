@@ -1,26 +1,27 @@
-import { defineConfig, globalIgnores } from 'eslint/config'
-import globals from 'globals'
-import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
-import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
+import prettier from 'eslint-config-prettier';
+import { includeIgnoreFile } from '@eslint/compat';
+import js from '@eslint/js';
+import svelte from 'eslint-plugin-svelte';
+import globals from 'globals';
+import { fileURLToPath } from 'node:url';
+import svelteConfig from './svelte.config.js';
 
-export default defineConfig([
-  {
-    name: 'app/files-to-lint',
-    files: ['**/*.{js,mjs,jsx,vue}'],
-  },
+const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
-
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
-    },
-  },
-
-  js.configs.recommended,
-  ...pluginVue.configs['flat/essential'],
-  skipFormatting,
-])
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+	includeIgnoreFile(gitignorePath),
+	js.configs.recommended,
+	...svelte.configs.recommended,
+	prettier,
+	...svelte.configs.prettier,
+	{
+		languageOptions: {
+			globals: { ...globals.browser, ...globals.node }
+		}
+	},
+	{
+		files: ['**/*.svelte', '**/*.svelte.js'],
+		languageOptions: { parserOptions: { svelteConfig } }
+	}
+];
