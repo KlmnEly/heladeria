@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const productRoutes = require('./routes/product.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,6 +14,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('API de heladeria Funcionando!');
 });
+app.use('/api/v1/products', productRoutes);
 
 // Start server
 app.listen(PORT, () => {
