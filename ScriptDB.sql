@@ -43,7 +43,7 @@ CREATE TABLE customers (
 CREATE TABLE users (
 	id_user INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	role_id INT,
-	name VARCHAR (100) NOT NULL,
+	first_name VARCHAR (100) NOT NULL,
 	last_name VARCHAR (100) NOT NULL,
 	document_number VARCHAR (50) NOT NULL,
 	phone_number VARCHAR(20) NOT NULL UNIQUE,
