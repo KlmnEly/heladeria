@@ -5,6 +5,7 @@ const productRoutes = require('./routes/product.routes');
 const flavorRoutes = require('./routes/flavor.routes');
 const containerRoutes = require('./routes/container.routes');
 const roleRoutes = require('./routes/role.routes');
+const customerRoutes = require('./routes/customer.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.use('/api/v1/products', productRoutes);
 app.use('/api/v1/flavors', flavorRoutes);
 app.use('/api/v1/containers', containerRoutes);
 app.use('/api/v1/roles', roleRoutes);
+app.use('/api/v1/customers', customerRoutes);
 
 // Start server
 app.listen(PORT, () => {

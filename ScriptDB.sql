@@ -30,7 +30,7 @@ CREATE TABLE products (
 
 CREATE TABLE customers (
 	id_customer INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	name VARCHAR (100) NOT NULL,
+	first_name VARCHAR (100) NOT NULL,
 	last_name VARCHAR (100) NOT NULL,
 	document_number VARCHAR (50),
 	phone_number VARCHAR(20),
