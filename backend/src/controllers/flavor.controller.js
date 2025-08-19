@@ -30,8 +30,8 @@ const flavorController = {
         }
 
         try {
-            const newFlavortId = await Flavor.create(req.body);
-            res.status(201).json({ message: 'Flavor Created successful!', id: newFlavortId });
+            const newFlavorId = await Flavor.create(req.body);
+            res.status(201).json({ message: 'Flavor Created successful!', id: newFlavorId });
         } catch (error) {
             res.status(500).json({ message: 'Error to create the flavor', error: error.message });
         }

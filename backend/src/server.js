@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const productRoutes = require('./routes/product.routes');
 const flavorRoutes = require('./routes/flavor.routes');
+const containerRoutes = require('./routes/container.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 });
 app.use('/api/v1/products', productRoutes);
 app.use('/api/v1/flavors', flavorRoutes);
+app.use('/api/v1/containers', containerRoutes);
 
 // Start server
 app.listen(PORT, () => {
